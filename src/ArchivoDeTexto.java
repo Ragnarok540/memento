@@ -1,13 +1,13 @@
 public class ArchivoDeTexto {
 
-    private String texto;
+    private final String TEXTO;
 
     public ArchivoDeTexto(String texto) {
-        this.texto = texto;
+        this.TEXTO = texto;
     }
 
     public String getTexto() {
-        return texto;
+        return this.TEXTO;
     }
 
 }

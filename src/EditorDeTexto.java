@@ -11,22 +11,21 @@ public class EditorDeTexto {
     }
 
     public void mostrarTexto() {
-        System.out.println("Editor: Texto:");
-        System.out.println("------------------------------------------------");
+        System.out.println("Editor:");
+        System.out.println("----------------------------------------");
         System.err.println(this.textoActual.toString());
-        System.out.println("------------------------------------------------");
+        System.out.println("----------------------------------------");
     }
 
     public ArchivoDeTexto guardarArchivo() {
         System.out.println("Editor: Guardando Archivo...");
-        System.out.println("------------------------------------------------");
-        return new ArchivoDeTexto(textoActual.toString());
-
+        System.out.println("----------------------------------------");
+        return new ArchivoDeTexto(this.textoActual.toString());
     }
 
     public void abrirArchivo(ArchivoDeTexto textoGuardado) {
         System.out.println("Editor: Abriendo Archivo...");
-        System.out.println("------------------------------------------------");
+        System.out.println("----------------------------------------");
         this.textoActual = new StringBuilder(textoGuardado.getTexto());
     }
 
