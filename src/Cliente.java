@@ -2,13 +2,13 @@ import java.util.*;
 
 public class Cliente {
 
+    // Instancia del "Caretaker"
+    private static Archivador archivador = new Archivador();
+
+    // Instancia del "Originator"
+    private static EditorDeTexto editor = new EditorDeTexto();
+
     public static void main(String[] args) {
-
-        // Colección que almacenará los archivos en memoria
-        HashMap<String, ArchivoDeTexto> archivos = new HashMap<>();
-
-        // Instancia del "Originator"
-        EditorDeTexto editor = new EditorDeTexto();
 
         // Agregamos un par de líneas al editor y mostramos el texto
         editor.agregarTexto("El patrón de diseño Memento\n");
@@ -16,9 +16,9 @@ public class Cliente {
         editor.mostrarTexto();
 
         // Usamos el método del editor que crea una nueva instancia del
-        // "Memento" y lo agregamos a la colección
+        // "Memento" y lo guardamos en el "Caretaker"
         ArchivoDeTexto archivo = editor.guardarArchivo();
-        archivos.put("archivo_0", archivo);
+        archivador.guardar("archivo_0", archivo);
 
         // Agregamos una nueva línea al editor y mostramos el texto
         editor.agregarTexto("Esta línea no será guardada\n");
@@ -26,7 +26,7 @@ public class Cliente {
 
         // Abrimos el archivo guardado obteniendo el "Memento"
         // y pasandolo al método que restaura el estado del "Originator"
-        archivo = archivos.get("archivo_0");
+        archivo = archivador.abrir("archivo_0");
         editor.abrirArchivo(archivo);
 
         // Mostramos el texto y verificamos que la última línea no fue
@@ -40,15 +40,15 @@ public class Cliente {
 
         // Guardamos un segundo archivo
         archivo = editor.guardarArchivo();
-        archivos.put("archivo_1", archivo);
+        archivador.guardar("archivo_1", archivo);
 
         // Nuevamente abrimos el primer archivo y lo mostramos
-        archivo = archivos.get("archivo_0");
+        archivo = archivador.abrir("archivo_0");
         editor.abrirArchivo(archivo);
         editor.mostrarTexto();
 
         // Por último mostramos el segundo archivo guardado
-        archivo = archivos.get("archivo_1");
+        archivo = archivador.abrir("archivo_1");
         editor.abrirArchivo(archivo);
         editor.mostrarTexto();
 

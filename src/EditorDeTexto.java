@@ -1,3 +1,4 @@
+// Clase "Originator"
 public class EditorDeTexto {
  
     private StringBuilder textoActual;

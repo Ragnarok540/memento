@@ -1,3 +1,4 @@
+// Clase "Memento"
 public class ArchivoDeTexto {
 
     private final String TEXTO;
