@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Cliente {
 
     // Instancia del "Caretaker"
